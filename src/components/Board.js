@@ -7,7 +7,9 @@ class Board extends Component {
     board: this.generateBoard(),
     collectedItems: [],
     tempItems: [],
-    currCheckedIds: []
+    currCheckedIds: [],
+    pairs: 0,
+    maxPairs: 5
   };
 
   generateBoard() {
@@ -89,46 +91,30 @@ class Board extends Component {
 
   revealCard = el => {
     const { id } = el.target;
-    const board = [...this.state.board];
-    const tempItems = [...this.state.tempItems];
-    const currCheckedIds = [...this.state.currCheckedIds];
+    const { board, tempItems, currCheckedIds } = this.state;
 
     board.map(card => {
       if (card.id === id) {
-        if (tempItems.length < 2) {
-          currCheckedIds.push(id);
-          tempItems.push(card.pairId);
-        } else {
+        if (!(tempItems.length < 2))
           tempItems.length = currCheckedIds.length = 0;
-          currCheckedIds.push(id);
-          tempItems.push(card.pairId);
-        }
-
+        currCheckedIds.push(id);
+        tempItems.push(card.pairId);
         card.isVisible = !card.isVisible;
       }
     });
 
-    setTimeout(() => {
-      if (tempItems[0] !== tempItems[1] && tempItems.length !== 1) {
-        board.map(card => {
-          if (card.id === currCheckedIds[0]) {
-            card.isVisible = false;
-          }
-          if (card.id === currCheckedIds[1]) {
-            card.isVisible = false;
-          }
-          console.log(card);
-        });
-      }
-      this.setState({ board });
-    }, 1500);
+    if (tempItems[0] !== tempItems[1] && tempItems.length !== 1) {
+      board.map(card => {
+        if (card.id === currCheckedIds[0] || card.id === currCheckedIds[1]) {
+          setTimeout(() => {
+            card.isVisible = !card.isVisible;
+            this.setState({ board });
+          }, 900);
+        }
+      });
+    }
 
-    console.log(currCheckedIds);
-    console.log(board);
-
-    this.setState({ currCheckedIds });
-    this.setState({ tempItems });
-    this.setState({ board });
+    this.setState({ currCheckedIds, tempItems, board });
   };
 
   render() {
