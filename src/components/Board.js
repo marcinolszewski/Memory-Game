@@ -9,7 +9,7 @@ class Board extends Component {
     tempItems: [],
     currCheckedIds: [],
     pairs: 0,
-    gameLimit: 5
+    gameLimit: 6
   };
 
   generateBoard() {
@@ -123,12 +123,17 @@ class Board extends Component {
     }
 
     this.setState({ currCheckedIds, tempItems, board });
-
+    this.resetGame();
     console.log(pairs);
   };
 
   resetGame = () => {
-    console.log('you won, reset the game');
+    if (this.state.pairs === this.state.gameLimit) {
+      console.log('you won, reset the game');
+    } else {
+      console.log('game is not finished');
+    }
+    console.log(this.state.pairs, this.state.gameLimit);
   };
 
   render() {
