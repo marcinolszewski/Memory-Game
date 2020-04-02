@@ -9,7 +9,7 @@ class Board extends Component {
     tempItems: [],
     currCheckedIds: [],
     pairs: 0,
-    maxPairs: 5
+    gameLimit: 5
   };
 
   generateBoard() {
@@ -18,71 +18,73 @@ class Board extends Component {
         name: 'marek',
         id: uuid(),
         pairId: 1,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
       },
       {
         name: 'krzysztof',
         id: uuid(),
         pairId: 2,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
       },
       {
         name: 'sandra',
         id: uuid(),
         pairId: 3,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
       },
       {
         name: 'barbara',
         id: uuid(),
         pairId: 4,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
       },
       {
         name: 'zofia',
         id: uuid(),
         pairId: 5,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
+      },
+      {
+        name: 'joanna',
+        id: uuid(),
+        pairId: 6,
+        isVisible: false
       },
       {
         name: 'marek',
         id: uuid(),
         pairId: 1,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
       },
       {
         name: 'krzysztof',
         id: uuid(),
         pairId: 2,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
       },
       {
         name: 'sandra',
         id: uuid(),
         pairId: 3,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
       },
       {
         name: 'barbara',
         id: uuid(),
         pairId: 4,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
       },
       {
         name: 'zofia',
         id: uuid(),
         pairId: 5,
-        isVisible: false,
-        isPaired: false
+        isVisible: false
+      },
+      {
+        name: 'joanna',
+        id: uuid(),
+        pairId: 6,
+        isVisible: false
       }
     ].sort(() => Math.random() - 0.5);
 
@@ -90,8 +92,9 @@ class Board extends Component {
   }
 
   revealCard = el => {
-    const { id } = el.target;
-    const { board, tempItems, currCheckedIds } = this.state;
+    el.stopPropagation();
+    const { id } = el.currentTarget;
+    const { board, tempItems, currCheckedIds, pairs } = this.state;
 
     board.map(card => {
       if (card.id === id) {
@@ -109,12 +112,23 @@ class Board extends Component {
           setTimeout(() => {
             card.isVisible = !card.isVisible;
             this.setState({ board });
-          }, 900);
+          }, 700);
         }
       });
     }
 
+    if (tempItems[0] === tempItems[1]) {
+      console.log('para!');
+      this.setState({ pairs: pairs + 1 });
+    }
+
     this.setState({ currCheckedIds, tempItems, board });
+
+    console.log(pairs);
+  };
+
+  resetGame = () => {
+    console.log('you won, reset the game');
   };
 
   render() {
