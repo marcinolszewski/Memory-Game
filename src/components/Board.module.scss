@@ -23,3 +23,9 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 }
+
+@media (max-width: 480px) {
+  .board {
+    grid-gap: 10px;
+  }
+}
