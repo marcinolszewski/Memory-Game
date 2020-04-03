@@ -2,92 +2,127 @@ import React, { Component } from 'react';
 import Card from './Card';
 import Scoreboard from './Scoreboard';
 import Gameover from './Gameover';
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
+import cat from '../assets/cat.png';
+import dino from '../assets/dino.png';
+import giraffe from '../assets/giraffe.png';
+import goat from '../assets/goat.jpg';
+import panda from '../assets/panda.jpg';
+import snake from '../assets/snake.jpg';
+import rhino from '../assets/rhino.png';
+import tiger from '../assets/tiger.jpg';
 
 class Board extends Component {
+  readScore = () => {};
+
   state = {
     board: this.generateBoard(),
     collectedItems: [],
     tempItems: [],
     currCheckedIds: [],
     pairs: 0,
-    gameLimit: 6,
-    score: 0
+    gameLimit: 8,
+    score: 0,
+    isGameoverVisible: true
   };
 
   generateBoard() {
     const shuffledArray = [
       {
-        name: 'marek',
-        id: uuid(),
+        imgSrc: cat,
+        id: uuidv4(),
         pairId: 1,
         isVisible: false
       },
       {
-        name: 'krzysztof',
-        id: uuid(),
+        imgSrc: dino,
+        id: uuidv4(),
         pairId: 2,
         isVisible: false
       },
       {
-        name: 'sandra',
-        id: uuid(),
+        imgSrc: giraffe,
+        id: uuidv4(),
         pairId: 3,
         isVisible: false
       },
       {
-        name: 'barbara',
-        id: uuid(),
+        imgSrc: goat,
+        id: uuidv4(),
         pairId: 4,
         isVisible: false
       },
       {
-        name: 'zofia',
-        id: uuid(),
+        imgSrc: panda,
+        id: uuidv4(),
         pairId: 5,
         isVisible: false
       },
       {
-        name: 'joanna',
-        id: uuid(),
+        imgSrc: rhino,
+        id: uuidv4(),
         pairId: 6,
         isVisible: false
       },
       {
-        name: 'marek',
-        id: uuid(),
+        imgSrc: snake,
+        id: uuidv4(),
+        pairId: 7,
+        isVisible: false
+      },
+      {
+        imgSrc: tiger,
+        id: uuidv4(),
+        pairId: 8,
+        isVisible: false
+      },
+      {
+        imgSrc: cat,
+        id: uuidv4(),
         pairId: 1,
         isVisible: false
       },
       {
-        name: 'krzysztof',
-        id: uuid(),
+        imgSrc: dino,
+        id: uuidv4(),
         pairId: 2,
         isVisible: false
       },
       {
-        name: 'sandra',
-        id: uuid(),
+        imgSrc: giraffe,
+        id: uuidv4(),
         pairId: 3,
         isVisible: false
       },
       {
-        name: 'barbara',
-        id: uuid(),
+        imgSrc: goat,
+        id: uuidv4(),
         pairId: 4,
         isVisible: false
       },
       {
-        name: 'zofia',
-        id: uuid(),
+        imgSrc: panda,
+        id: uuidv4(),
         pairId: 5,
         isVisible: false
       },
       {
-        name: 'joanna',
-        id: uuid(),
+        imgSrc: rhino,
+        id: uuidv4(),
         pairId: 6,
+        isVisible: false
+      },
+      {
+        imgSrc: snake,
+        id: uuidv4(),
+        pairId: 7,
+        isVisible: false
+      },
+      {
+        imgSrc: tiger,
+        id: uuidv4(),
+        pairId: 8,
         isVisible: false
       }
     ].sort(() => Math.random() - 0.5);
@@ -98,7 +133,7 @@ class Board extends Component {
   revealCard = el => {
     el.stopPropagation();
     const { id } = el.currentTarget;
-    const { board, tempItems, currCheckedIds, pairs, gameLimit } = this.state;
+    const { board, tempItems, currCheckedIds, pairs } = this.state;
 
     board.forEach(card => {
       if (!card.isVisible && card.id === id) {
@@ -168,7 +203,7 @@ class Board extends Component {
                 id={el.id}
                 pairId={el.pairId}
                 isVisible={el.isVisible}
-                name={el.name}
+                imgSrc={el.imgSrc}
                 handleOnClick={this.revealCard}
               />
             );

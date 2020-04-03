@@ -1,7 +1,7 @@
 .flipCard {
   background-color: transparent;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   perspective: 1000px;
 
   &__inner {
@@ -20,12 +20,26 @@
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    border-radius: 15px;
+  }
+
+  &__front {
+    background: #fc466b;
+    background: -webkit-linear-gradient(to right, #3f5efb, #fc466b);
+    background: linear-gradient(to right, #3f5efb, #fc466b);
   }
 
   &__back {
-    background-color: dodgerblue;
-    color: white;
+    background-color: #fff;
     transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    max-width: 100px;
+    max-height: 100px;
   }
 
   &__cover {

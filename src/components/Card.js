@@ -1,8 +1,7 @@
 import React from 'react';
-import card from '../assets/pika.jpeg';
 import styles from './Card.module.scss';
 
-const Card = ({ name, id, pairId, isVisible, handleOnClick }) => {
+const Card = ({ imgSrc, id, isVisible, handleOnClick }) => {
   return (
     <div className={styles.flipCard} id={id} onClick={handleOnClick}>
       <div
@@ -12,10 +11,10 @@ const Card = ({ name, id, pairId, isVisible, handleOnClick }) => {
             : `${styles.flipCard__inner}`
         }
       >
-        <div className={styles.flipCard__front}>
-          <img className={styles.flipCard__cover} src={card} />
+        <div className={styles.flipCard__front}></div>
+        <div className={styles.flipCard__back}>
+          <img src={imgSrc} className={styles.flipCard__img} alt="Card Front" />
         </div>
-        <div className={styles.flipCard__back}>{name}</div>
       </div>
     </div>
   );

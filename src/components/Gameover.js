@@ -3,9 +3,15 @@ import styles from './Gameover.module.scss';
 
 const Gameover = ({ handleClick, isVisible }) => {
   return (
-    <div className={isVisible ? styles.wrapper : styles.hidden}>
-      <p className={styles.header}>Gratulacje, wygrałeś!</p>
-      <button onClick={handleClick}>Rozpocznij od nowa</button>
+    <div
+      className={
+        isVisible ? styles.wrapper : `${styles.wrapper} ${styles.hidden}`
+      }
+    >
+      <p className={styles.header}>Gratulacje, wygrałaś!</p>
+      <button className={styles.button} onClick={handleClick}>
+        Rozpocznij od nowa
+      </button>
     </div>
   );
 };
