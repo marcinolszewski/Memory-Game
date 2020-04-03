@@ -24,7 +24,7 @@ class Board extends Component {
     pairs: 0,
     gameLimit: 8,
     score: 0,
-    isGameoverVisible: true
+    isGameoverVisible: false
   };
 
   generateBoard() {
