@@ -1,16 +1,22 @@
 import React from 'react';
 import card from '../assets/pika.jpeg';
+import styles from './Card.module.scss';
 
 const Card = ({ name, id, pairId, isVisible, handleOnClick }) => {
   return (
-    <div
-      id={id}
-      data-number={pairId}
-      className={isVisible ? 'card__inner visible' : 'card__inner'}
-      onClick={handleOnClick}
-    >
-      <img className="card__front" src={card} alt="" />
-      <div className="card__back">{name}</div>
+    <div className={styles.flipCard} id={id} onClick={handleOnClick}>
+      <div
+        className={
+          isVisible
+            ? `${styles.flipCard__inner} ${styles.rotate}`
+            : `${styles.flipCard__inner}`
+        }
+      >
+        <div className={styles.flipCard__front}>
+          <img className={styles.flipCard__cover} src={card} />
+        </div>
+        <div className={styles.flipCard__back}>{name}</div>
+      </div>
     </div>
   );
 };

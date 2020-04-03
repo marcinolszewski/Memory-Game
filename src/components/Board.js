@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import Scoreboard from './Scoreboard';
+import Gameover from './Gameover';
 import uuid from 'uuid/v4';
+import styles from './Board.module.scss';
 
 class Board extends Component {
   state = {
@@ -9,7 +12,8 @@ class Board extends Component {
     tempItems: [],
     currCheckedIds: [],
     pairs: 0,
-    gameLimit: 6
+    gameLimit: 6,
+    score: 0
   };
 
   generateBoard() {
@@ -94,10 +98,10 @@ class Board extends Component {
   revealCard = el => {
     el.stopPropagation();
     const { id } = el.currentTarget;
-    const { board, tempItems, currCheckedIds, pairs } = this.state;
+    const { board, tempItems, currCheckedIds, pairs, gameLimit } = this.state;
 
-    board.map(card => {
-      if (card.id === id) {
+    board.forEach(card => {
+      if (!card.isVisible && card.id === id) {
         if (!(tempItems.length < 2))
           tempItems.length = currCheckedIds.length = 0;
         currCheckedIds.push(id);
@@ -107,7 +111,7 @@ class Board extends Component {
     });
 
     if (tempItems[0] !== tempItems[1] && tempItems.length !== 1) {
-      board.map(card => {
+      board.forEach(card => {
         if (card.id === currCheckedIds[0] || card.id === currCheckedIds[1]) {
           setTimeout(() => {
             card.isVisible = !card.isVisible;
@@ -118,40 +122,58 @@ class Board extends Component {
     }
 
     if (tempItems[0] === tempItems[1]) {
-      console.log('para!');
       this.setState({ pairs: pairs + 1 });
     }
 
-    this.setState({ currCheckedIds, tempItems, board });
-    this.resetGame();
-    console.log(pairs);
+    this.setState({ currCheckedIds, tempItems, board }, () => {
+      const { pairs, gameLimit } = this.state;
+      if (pairs === gameLimit) {
+        this.finishGame();
+        this.toggleGameOverBoard(1000);
+      }
+    });
+  };
+
+  toggleGameOverBoard = timeout => {
+    setTimeout(() => {
+      this.setState({ isGameoverVisible: !this.state.isGameoverVisible });
+    }, timeout);
+  };
+
+  finishGame = () => {
+    this.setState({
+      score: this.state.score + 1,
+      pairs: 0
+    });
   };
 
   resetGame = () => {
-    if (this.state.pairs === this.state.gameLimit) {
-      console.log('you won, reset the game');
-    } else {
-      console.log('game is not finished');
-    }
-    console.log(this.state.pairs, this.state.gameLimit);
+    this.setState({ board: this.generateBoard(), isGameoverVisible: false });
   };
 
   render() {
-    const { board } = this.state;
+    const { board, score } = this.state;
     return (
-      <div className="card-wrapper">
-        {board.map(el => {
-          return (
-            <Card
-              key={el.id}
-              id={el.id}
-              pairId={el.pairId}
-              isVisible={el.isVisible}
-              name={el.name}
-              handleOnClick={this.revealCard}
-            />
-          );
-        })}
+      <div className={styles.boardWrapper}>
+        <Gameover
+          isVisible={this.state.isGameoverVisible}
+          handleClick={this.resetGame}
+        />
+        <Scoreboard score={score} />
+        <div className={styles.board}>
+          {board.map(el => {
+            return (
+              <Card
+                key={el.id}
+                id={el.id}
+                pairId={el.pairId}
+                isVisible={el.isVisible}
+                name={el.name}
+                handleOnClick={this.revealCard}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
