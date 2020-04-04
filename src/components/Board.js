@@ -4,7 +4,7 @@ import Scoreboard from './Scoreboard';
 import Gameover from './Gameover';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
-import images from '../componentAssists/Images';
+import images from '../componentAssets/Images';
 import {
   cardReveal,
   foundPair,

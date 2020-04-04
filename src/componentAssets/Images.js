@@ -1,4 +1,4 @@
-import cat from '../assets/catpx.png';
+import cat from '../assets/cat.png';
 import dino from '../assets/dino.png';
 import giraffe from '../assets/giraffe.png';
 import goat from '../assets/goat.jpg';
