@@ -9,7 +9,7 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
+    transition: transform 0.5s;
     transform-style: preserve-3d;
   }
 
@@ -24,9 +24,9 @@
   }
 
   &__front {
-    background: #fc466b;
-    background: -webkit-linear-gradient(to right, #3f5efb, #fc466b);
-    background: linear-gradient(to right, #3f5efb, #fc466b);
+    background: url('../assets/card_back.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
 
   &__back {

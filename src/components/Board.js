@@ -4,17 +4,18 @@ import Scoreboard from './Scoreboard';
 import Gameover from './Gameover';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
-import cat from '../assets/cat.png';
-import dino from '../assets/dino.png';
-import giraffe from '../assets/giraffe.png';
-import goat from '../assets/goat.jpg';
-import panda from '../assets/panda.jpg';
-import snake from '../assets/snake.jpg';
-import rhino from '../assets/rhino.png';
-import tiger from '../assets/tiger.jpg';
+import images from '../componentAssists/Images';
+import {
+  cardReveal,
+  foundPair,
+  gameWin,
+  menuMusic,
+} from '../componentAssets/Sounds';
 
 class Board extends Component {
-  readScore = () => {};
+  componentDidMount() {
+    menuMusic.play();
+  }
 
   state = {
     board: this.generateBoard(),
@@ -24,118 +25,120 @@ class Board extends Component {
     pairs: 0,
     gameLimit: 8,
     score: 0,
-    isGameoverVisible: false
+    isGameoverVisible: false,
   };
 
   generateBoard() {
     const shuffledArray = [
       {
-        imgSrc: cat,
+        imgSrc: images.cat,
         id: uuidv4(),
         pairId: 1,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: dino,
+        imgSrc: images.dino,
         id: uuidv4(),
         pairId: 2,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: giraffe,
+        imgSrc: images.giraffe,
         id: uuidv4(),
         pairId: 3,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: goat,
+        imgSrc: images.goat,
         id: uuidv4(),
         pairId: 4,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: panda,
+        imgSrc: images.panda,
         id: uuidv4(),
         pairId: 5,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: rhino,
+        imgSrc: images.rhino,
         id: uuidv4(),
         pairId: 6,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: snake,
+        imgSrc: images.snake,
         id: uuidv4(),
         pairId: 7,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: tiger,
+        imgSrc: images.tiger,
         id: uuidv4(),
         pairId: 8,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: cat,
+        imgSrc: images.cat,
         id: uuidv4(),
         pairId: 1,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: dino,
+        imgSrc: images.dino,
         id: uuidv4(),
         pairId: 2,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: giraffe,
+        imgSrc: images.giraffe,
         id: uuidv4(),
         pairId: 3,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: goat,
+        imgSrc: images.goat,
         id: uuidv4(),
         pairId: 4,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: panda,
+        imgSrc: images.panda,
         id: uuidv4(),
         pairId: 5,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: rhino,
+        imgSrc: images.rhino,
         id: uuidv4(),
         pairId: 6,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: snake,
+        imgSrc: images.snake,
         id: uuidv4(),
         pairId: 7,
-        isVisible: false
+        isVisible: false,
       },
       {
-        imgSrc: tiger,
+        imgSrc: images.tiger,
         id: uuidv4(),
         pairId: 8,
-        isVisible: false
-      }
+        isVisible: false,
+      },
     ].sort(() => Math.random() - 0.5);
 
     return shuffledArray;
   }
 
-  revealCard = el => {
+  revealCard = (el) => {
     el.stopPropagation();
     const { id } = el.currentTarget;
     const { board, tempItems, currCheckedIds, pairs } = this.state;
 
-    board.forEach(card => {
+    cardReveal.play();
+
+    board.forEach((card) => {
       if (!card.isVisible && card.id === id) {
         if (!(tempItems.length < 2))
           tempItems.length = currCheckedIds.length = 0;
@@ -146,7 +149,7 @@ class Board extends Component {
     });
 
     if (tempItems[0] !== tempItems[1] && tempItems.length !== 1) {
-      board.forEach(card => {
+      board.forEach((card) => {
         if (card.id === currCheckedIds[0] || card.id === currCheckedIds[1]) {
           setTimeout(() => {
             card.isVisible = !card.isVisible;
@@ -157,32 +160,45 @@ class Board extends Component {
     }
 
     if (tempItems[0] === tempItems[1]) {
+      foundPair.play();
       this.setState({ pairs: pairs + 1 });
     }
 
     this.setState({ currCheckedIds, tempItems, board }, () => {
       const { pairs, gameLimit } = this.state;
       if (pairs === gameLimit) {
+        menuMusic.fade(1, 0.2, 100);
+        gameWin.play();
         this.finishGame();
         this.toggleGameOverBoard(1000);
       }
     });
   };
 
-  toggleGameOverBoard = timeout => {
+  toggleGameOverBoard = (timeout) => {
     setTimeout(() => {
       this.setState({ isGameoverVisible: !this.state.isGameoverVisible });
     }, timeout);
   };
 
+  readScoreFromCookie = () => {
+    // TODO
+  };
+
+  saveScoreToCookie = (score) => (document.cookie = `"score=${score}"`);
+
   finishGame = () => {
-    this.setState({
-      score: this.state.score + 1,
-      pairs: 0
-    });
+    this.setState(
+      {
+        score: this.state.score + 1,
+        pairs: 0,
+      },
+      () => this.saveScoreToCookie(this.state.score)
+    );
   };
 
   resetGame = () => {
+    menuMusic.fade(0.2, 1, 100);
     this.setState({ board: this.generateBoard(), isGameoverVisible: false });
   };
 
@@ -196,7 +212,7 @@ class Board extends Component {
         />
         <Scoreboard score={score} />
         <div className={styles.board}>
-          {board.map(el => {
+          {board.map((el) => {
             return (
               <Card
                 key={el.id}
