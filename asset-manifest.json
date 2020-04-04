@@ -1,20 +1,24 @@
 {
   "files": {
-    "main.css": "/Memory-Game/static/css/main.c990cb03.chunk.css",
-    "main.js": "/Memory-Game/static/js/main.e011fe49.chunk.js",
-    "main.js.map": "/Memory-Game/static/js/main.e011fe49.chunk.js.map",
+    "main.css": "/Memory-Game/static/css/main.63422e94.chunk.css",
+    "main.js": "/Memory-Game/static/js/main.82efcde2.chunk.js",
+    "main.js.map": "/Memory-Game/static/js/main.82efcde2.chunk.js.map",
     "runtime-main.js": "/Memory-Game/static/js/runtime-main.1612f1b7.js",
     "runtime-main.js.map": "/Memory-Game/static/js/runtime-main.1612f1b7.js.map",
-    "static/js/2.3d751582.chunk.js": "/Memory-Game/static/js/2.3d751582.chunk.js",
-    "static/js/2.3d751582.chunk.js.map": "/Memory-Game/static/js/2.3d751582.chunk.js.map",
+    "static/js/2.e6794c81.chunk.js": "/Memory-Game/static/js/2.e6794c81.chunk.js",
+    "static/js/2.e6794c81.chunk.js.map": "/Memory-Game/static/js/2.e6794c81.chunk.js.map",
     "index.html": "/Memory-Game/index.html",
-    "precache-manifest.87df8b01e4b281539bc2dfedb333e666.js": "/Memory-Game/precache-manifest.87df8b01e4b281539bc2dfedb333e666.js",
+    "precache-manifest.a2170ce38a9603d1160b9aa3a784c397.js": "/Memory-Game/precache-manifest.a2170ce38a9603d1160b9aa3a784c397.js",
     "service-worker.js": "/Memory-Game/service-worker.js",
-    "static/css/main.c990cb03.chunk.css.map": "/Memory-Game/static/css/main.c990cb03.chunk.css.map",
-    "static/js/2.3d751582.chunk.js.LICENSE.txt": "/Memory-Game/static/js/2.3d751582.chunk.js.LICENSE.txt",
+    "static/css/main.63422e94.chunk.css.map": "/Memory-Game/static/css/main.63422e94.chunk.css.map",
+    "static/js/2.e6794c81.chunk.js.LICENSE.txt": "/Memory-Game/static/js/2.e6794c81.chunk.js.LICENSE.txt",
     "static/media/Board.module.scss": "/Memory-Game/static/media/bg.472672d9.jpg",
+    "static/media/bgMusic1.mp3": "/Memory-Game/static/media/bgMusic1.8373bea7.mp3",
+    "static/media/cardReveal.wav": "/Memory-Game/static/media/cardReveal.a27a6345.wav",
     "static/media/cat.png": "/Memory-Game/static/media/cat.033161cb.png",
     "static/media/dino.png": "/Memory-Game/static/media/dino.ca60c323.png",
+    "static/media/foundPair.wav": "/Memory-Game/static/media/foundPair.a75c2497.wav",
+    "static/media/gameWin.wav": "/Memory-Game/static/media/gameWin.7740f435.wav",
     "static/media/giraffe.png": "/Memory-Game/static/media/giraffe.645f43d2.png",
     "static/media/goat.jpg": "/Memory-Game/static/media/goat.04a73f73.jpg",
     "static/media/panda.jpg": "/Memory-Game/static/media/panda.14c98419.jpg",
@@ -24,8 +28,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1612f1b7.js",
-    "static/js/2.3d751582.chunk.js",
-    "static/css/main.c990cb03.chunk.css",
-    "static/js/main.e011fe49.chunk.js"
+    "static/js/2.e6794c81.chunk.js",
+    "static/css/main.63422e94.chunk.css",
+    "static/js/main.82efcde2.chunk.js"
   ]
 }
