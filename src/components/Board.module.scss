@@ -13,9 +13,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: url('../assets/bg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .board {

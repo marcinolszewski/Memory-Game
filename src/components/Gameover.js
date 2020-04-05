@@ -8,7 +8,11 @@ const Gameover = ({ handleClick, isVisible }) => {
         isVisible ? styles.wrapper : `${styles.wrapper} ${styles.hidden}`
       }
     >
-      <p className={styles.header}>Gratulacje, wygrałaś!</p>
+      <p className={styles.header}>
+        Gratulacje,
+        <br />
+        wygrałaś!
+      </p>
       <button className={styles.button} onClick={handleClick}>
         Rozpocznij od nowa
       </button>

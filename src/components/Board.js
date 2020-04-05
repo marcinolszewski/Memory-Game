@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from './Card';
 import Scoreboard from './Scoreboard';
 import Gameover from './Gameover';
+import Background from '../components/Background';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
 import images from '../componentAssets/Images';
@@ -205,27 +206,31 @@ class Board extends Component {
   render() {
     const { board, score } = this.state;
     return (
-      <div className={styles.boardWrapper}>
-        <Gameover
-          isVisible={this.state.isGameoverVisible}
-          handleClick={this.resetGame}
-        />
-        <Scoreboard score={score} />
-        <div className={styles.board}>
-          {board.map((el) => {
-            return (
-              <Card
-                key={el.id}
-                id={el.id}
-                pairId={el.pairId}
-                isVisible={el.isVisible}
-                imgSrc={el.imgSrc}
-                handleOnClick={this.revealCard}
-              />
-            );
-          })}
+      <Background>
+        <div className={styles.boardWrapper}>
+          <Gameover
+            isVisible={this.state.isGameoverVisible}
+            handleClick={this.resetGame}
+          />
+          <Scoreboard score={score} />
+          {/* <Background /> */}
+          <div className={styles.board}>
+            {/* <button onClick={this.muteMusic}>wycisz dzwieki</button> */}
+            {board.map((el) => {
+              return (
+                <Card
+                  key={el.id}
+                  id={el.id}
+                  pairId={el.pairId}
+                  isVisible={el.isVisible}
+                  imgSrc={el.imgSrc}
+                  handleOnClick={this.revealCard}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </Background>
     );
   }
 }

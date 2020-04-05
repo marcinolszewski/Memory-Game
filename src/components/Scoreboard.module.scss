@@ -1,9 +1,14 @@
 .wrapper {
-  border: 1px dashed #fff;
-  border-radius: 20px;
-  font-size: 20px;
+  border: 5px dashed #fff;
+  border-radius: 0px;
   padding: 20px;
   margin-bottom: 20px;
-  font-size: 34px;
-  color: #fff;
+  font-size: 24px;
+  color: #000;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+    padding: 10px;
+    border: 3px dashed #fff;
+  }
 }
