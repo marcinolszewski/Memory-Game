@@ -24,6 +24,20 @@
   grid-gap: 20px;
 }
 
+.muteBtn {
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: none;
+  background-image: url('../assets/mute.svg');
+  background-size: 35px;
+  width: 35px;
+  height: 35px;
+}
+
+.muted {
+  filter: opacity(0.3);
+}
+
 @media (max-width: 480px) {
   .board {
     grid-gap: 10px;
