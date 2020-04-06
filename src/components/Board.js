@@ -27,6 +27,7 @@ class Board extends Component {
     gameLimit: 8,
     score: 0,
     isGameoverVisible: false,
+    isMusicFaded: false,
   };
 
   generateBoard() {
@@ -168,7 +169,7 @@ class Board extends Component {
     this.setState({ currCheckedIds, tempItems, board }, () => {
       const { pairs, gameLimit } = this.state;
       if (pairs === gameLimit) {
-        menuMusic.fade(1, 0.2, 100);
+        if (!this.state.isMusicFaded) menuMusic.fade(1, 0.2, 100);
         gameWin.play();
         this.finishGame();
         this.toggleGameOverBoard(1000);
@@ -198,8 +199,16 @@ class Board extends Component {
     );
   };
 
+  muteMusic = () => {
+    !this.state.isMusicFaded
+      ? menuMusic.fade(1, 0, 200)
+      : menuMusic.fade(0, 1, 200);
+
+    this.setState({ isMusicFaded: !this.state.isMusicFaded });
+  };
+
   resetGame = () => {
-    menuMusic.fade(0.2, 1, 100);
+    if (!this.state.isMusicFaded) menuMusic.fade(0.2, 1, 100);
     this.setState({ board: this.generateBoard(), isGameoverVisible: false });
   };
 
@@ -212,10 +221,16 @@ class Board extends Component {
             isVisible={this.state.isGameoverVisible}
             handleClick={this.resetGame}
           />
+          <button
+            className={
+              this.state.isMusicFaded
+                ? `${styles.muteBtn} ${styles.muted}`
+                : `${styles.muteBtn}`
+            }
+            onClick={this.muteMusic}
+          ></button>
           <Scoreboard score={score} />
-          {/* <Background /> */}
           <div className={styles.board}>
-            {/* <button onClick={this.muteMusic}>wycisz dzwieki</button> */}
             {board.map((el) => {
               return (
                 <Card
