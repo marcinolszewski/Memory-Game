@@ -1,4 +1,4 @@
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import cardRevealSound from '../assets/sounds/cardReveal.wav';
 import foundPairSound from '../assets/sounds/foundPair.wav';
 import gameWinSound from '../assets/sounds/gameWin.wav';
@@ -15,6 +15,7 @@ export const foundPair = new Howl({
 export const gameWin = new Howl({
   src: [gameWinSound],
 });
+
 export const menuMusic = new Howl({
   src: [menuMusicSound],
   volume: 0.6,

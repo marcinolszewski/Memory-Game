@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import Card from './Card';
-import Scoreboard from './Scoreboard';
-import Gameover from './Gameover';
-import Background from '../components/Background';
+import Card from '../Card/Card';
+import Scoreboard from '../Scoreboard/Scoreboard';
+import Gameover from '../Gameover/Gameover';
+import Background from '../Background/Background';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
-import images from '../componentAssets/Images';
+import images from '../../componentAssets/Images';
 import {
   cardReveal,
   foundPair,
   gameWin,
   menuMusic,
-} from '../componentAssets/Sounds';
+} from '../../componentAssets/Sounds';
 
 class Board extends Component {
   componentDidMount() {
