@@ -1,11 +1,11 @@
 import React from 'react';
-import Board from './components/Board/Board';
+import Menu from './components/Menu/Menu';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <Board header="Memory game" />
+      <Menu />
     </div>
   );
 }

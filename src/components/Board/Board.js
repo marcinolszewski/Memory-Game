@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Card from '../Card/Card';
 import Scoreboard from '../Scoreboard/Scoreboard';
 import Gameover from '../Gameover/Gameover';
-import Background from '../Background/Background';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
 import images from '../../componentAssets/Images';
@@ -16,6 +15,10 @@ import {
 class Board extends Component {
   componentDidMount() {
     menuMusic.play();
+  }
+
+  componentWillUnmount() {
+    menuMusic.stop();
   }
 
   state = {
@@ -215,37 +218,36 @@ class Board extends Component {
   render() {
     const { board, score } = this.state;
     return (
-      <Background>
-        <div className={styles.boardWrapper}>
-          <Gameover
-            isVisible={this.state.isGameoverVisible}
-            handleClick={this.resetGame}
-          />
-          <button
-            className={
-              this.state.isMusicFaded
-                ? `${styles.muteBtn} ${styles.muted}`
-                : `${styles.muteBtn}`
-            }
-            onClick={this.muteMusic}
-          ></button>
-          <Scoreboard score={score} />
-          <div className={styles.board}>
-            {board.map((el) => {
-              return (
-                <Card
-                  key={el.id}
-                  id={el.id}
-                  pairId={el.pairId}
-                  isVisible={el.isVisible}
-                  imgSrc={el.imgSrc}
-                  handleOnClick={this.revealCard}
-                />
-              );
-            })}
-          </div>
+      <div className={styles.boardWrapper}>
+        <Gameover
+          isVisible={this.state.isGameoverVisible}
+          handleClick={this.resetGame}
+        />
+        <button onClick={() => this.props.showMenu()}>Menu</button>
+        <button
+          className={
+            this.state.isMusicFaded
+              ? `${styles.muteBtn} ${styles.muted}`
+              : `${styles.muteBtn}`
+          }
+          onClick={this.muteMusic}
+        ></button>
+        <Scoreboard score={score} />
+        <div className={styles.board}>
+          {board.map((el) => {
+            return (
+              <Card
+                key={el.id}
+                id={el.id}
+                pairId={el.pairId}
+                isVisible={el.isVisible}
+                imgSrc={el.imgSrc}
+                handleOnClick={this.revealCard}
+              />
+            );
+          })}
         </div>
-      </Background>
+      </div>
     );
   }
 }
