@@ -31,7 +31,7 @@ class Menu extends Component {
 
   render() {
     const { newGame, settings, scores } = this.state;
-    let menu;
+    let menu = <MenuElements changeMenu={(el) => this.changeMenu(el)} />;
 
     if (newGame) {
       menu = <Board showMenu={() => this.showMenu()} />;
@@ -39,8 +39,6 @@ class Menu extends Component {
       menu = <Settings showMenu={() => this.showMenu()} />;
     } else if (scores) {
       menu = <Scores showMenu={() => this.showMenu()} />;
-    } else {
-      menu = <MenuElements changeMenu={(el) => this.changeMenu(el)} />;
     }
     return <Background>{menu}</Background>;
   }

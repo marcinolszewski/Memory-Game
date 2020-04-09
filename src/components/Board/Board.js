@@ -154,7 +154,7 @@ class Board extends Component {
       }
     });
 
-    if (tempItems[0] !== tempItems[1] && tempItems.length !== 1) {
+    if (tempItems[1] && tempItems[0] !== tempItems[1]) {
       board.forEach((card) => {
         if (card.id === currCheckedIds[0] || card.id === currCheckedIds[1]) {
           setTimeout(() => {

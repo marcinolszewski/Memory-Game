@@ -4,14 +4,13 @@ import styles from './Settings.module.scss';
 import '../../Globals.scss';
 
 class Settings extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: '',
-      nameModalVisible: false,
-      showNameError: false,
-    };
-  }
+
+  state = {
+    name: '',
+    nameModalVisible: false,
+    showNameError: false,
+  };
+
 
   changeName = (event) => {
     this.setState({ name: event.target.value });
