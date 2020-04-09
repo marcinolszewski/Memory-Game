@@ -4,7 +4,7 @@ import styles from './Scoreboard.module.scss';
 function Scoreboard({ score }) {
   return (
     <div className={styles.wrapper}>
-      <span>Ilość wygranych gier: </span>
+      <span>Games won: </span>
       <span>{score}</span>
     </div>
   );

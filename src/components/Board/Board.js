@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import Card from './Card';
-import Scoreboard from './Scoreboard';
-import Gameover from './Gameover';
-import Background from '../components/Background';
+import Card from '../Card/Card';
+import Scoreboard from '../Scoreboard/Scoreboard';
+import Gameover from '../Gameover/Gameover';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
-import images from '../componentAssets/Images';
+import images from '../../componentAssets/Images';
+import '../../Globals.scss';
 import {
   cardReveal,
   foundPair,
   gameWin,
   menuMusic,
-} from '../componentAssets/Sounds';
+} from '../../componentAssets/Sounds';
 
 class Board extends Component {
   componentDidMount() {
     menuMusic.play();
+  }
+
+  componentWillUnmount() {
+    menuMusic.stop();
   }
 
   state = {
@@ -215,37 +219,43 @@ class Board extends Component {
   render() {
     const { board, score } = this.state;
     return (
-      <Background>
-        <div className={styles.boardWrapper}>
-          <Gameover
-            isVisible={this.state.isGameoverVisible}
-            handleClick={this.resetGame}
-          />
-          <button
-            className={
-              this.state.isMusicFaded
-                ? `${styles.muteBtn} ${styles.muted}`
-                : `${styles.muteBtn}`
-            }
-            onClick={this.muteMusic}
-          ></button>
-          <Scoreboard score={score} />
-          <div className={styles.board}>
-            {board.map((el) => {
-              return (
-                <Card
-                  key={el.id}
-                  id={el.id}
-                  pairId={el.pairId}
-                  isVisible={el.isVisible}
-                  imgSrc={el.imgSrc}
-                  handleOnClick={this.revealCard}
-                />
-              );
-            })}
+      <div className={styles.boardWrapper}>
+        <Gameover
+          isVisible={this.state.isGameoverVisible}
+          handleClick={this.resetGame}
+        />
+        <div className="btn__wrapper">
+          <button className="menu__btn" onClick={() => this.props.showMenu()}>
+            Menu
+          </button>
+          <div className="menu__mute">
+            <button
+              className={
+                this.state.isMusicFaded
+                  ? `${styles.muteBtn} ${styles.muted}`
+                  : `${styles.muteBtn}`
+              }
+              onClick={this.muteMusic}
+            ></button>
           </div>
         </div>
-      </Background>
+
+        <Scoreboard score={score} />
+        <div className={styles.board}>
+          {board.map((el) => {
+            return (
+              <Card
+                key={el.id}
+                id={el.id}
+                pairId={el.pairId}
+                isVisible={el.isVisible}
+                imgSrc={el.imgSrc}
+                handleOnClick={this.revealCard}
+              />
+            );
+          })}
+        </div>
+      </div>
     );
   }
 }

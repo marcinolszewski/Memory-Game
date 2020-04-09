@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Background.module.scss';
-import dino1 from '../assets/background/tard.png';
-import dino2 from '../assets/background/mort.png';
-import dino3 from '../assets/background/doux.png';
+import dino1 from '../../assets/background/tard.png';
+import dino2 from '../../assets/background/mort.png';
+import dino3 from '../../assets/background/doux.png';
 
 const Background = (props) => {
   return (

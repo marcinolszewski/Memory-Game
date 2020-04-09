@@ -1,11 +1,14 @@
 import React from 'react';
-import Board from './components/Board';
+import Menu from './components/Menu/Menu';
+import SettingsContextProvider from './context/SettingsContext';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <Board header="Memory game" />
+      <SettingsContextProvider>
+        <Menu />
+      </SettingsContextProvider>
     </div>
   );
 }
