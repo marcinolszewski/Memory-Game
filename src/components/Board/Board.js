@@ -5,6 +5,7 @@ import Gameover from '../Gameover/Gameover';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
 import images from '../../componentAssets/Images';
+import '../../Globals.scss';
 import {
   cardReveal,
   foundPair,
@@ -223,15 +224,22 @@ class Board extends Component {
           isVisible={this.state.isGameoverVisible}
           handleClick={this.resetGame}
         />
-        <button onClick={() => this.props.showMenu()}>Menu</button>
-        <button
-          className={
-            this.state.isMusicFaded
-              ? `${styles.muteBtn} ${styles.muted}`
-              : `${styles.muteBtn}`
-          }
-          onClick={this.muteMusic}
-        ></button>
+        <div className="btn__wrapper">
+          <button className="menu__btn" onClick={() => this.props.showMenu()}>
+            Menu
+          </button>
+          <div className="menu__mute">
+            <button
+              className={
+                this.state.isMusicFaded
+                  ? `${styles.muteBtn} ${styles.muted}`
+                  : `${styles.muteBtn}`
+              }
+              onClick={this.muteMusic}
+            ></button>
+          </div>
+        </div>
+
         <Scoreboard score={score} />
         <div className={styles.board}>
           {board.map((el) => {
