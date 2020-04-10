@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import Card from '../Card/Card';
 import Scoreboard from '../Scoreboard/Scoreboard';
 import Gameover from '../Gameover/Gameover';
-import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
-import images from '../../componentAssets/Images';
+import BoardGenerator from '../BoardGenerator/BoardGenerator';
 import '../../Globals.scss';
 import {
   cardReveal,
@@ -23,7 +22,7 @@ class Board extends Component {
   }
 
   state = {
-    board: this.generateBoard(),
+    board: BoardGenerator(),
     collectedItems: [],
     tempItems: [],
     currCheckedIds: [],
@@ -33,109 +32,6 @@ class Board extends Component {
     isGameoverVisible: false,
     isMusicFaded: false,
   };
-
-  generateBoard() {
-    const shuffledArray = [
-      {
-        imgSrc: images.cat,
-        id: uuidv4(),
-        pairId: 1,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.dino,
-        id: uuidv4(),
-        pairId: 2,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.giraffe,
-        id: uuidv4(),
-        pairId: 3,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.goat,
-        id: uuidv4(),
-        pairId: 4,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.panda,
-        id: uuidv4(),
-        pairId: 5,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.rhino,
-        id: uuidv4(),
-        pairId: 6,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.snake,
-        id: uuidv4(),
-        pairId: 7,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.tiger,
-        id: uuidv4(),
-        pairId: 8,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.cat,
-        id: uuidv4(),
-        pairId: 1,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.dino,
-        id: uuidv4(),
-        pairId: 2,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.giraffe,
-        id: uuidv4(),
-        pairId: 3,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.goat,
-        id: uuidv4(),
-        pairId: 4,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.panda,
-        id: uuidv4(),
-        pairId: 5,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.rhino,
-        id: uuidv4(),
-        pairId: 6,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.snake,
-        id: uuidv4(),
-        pairId: 7,
-        isVisible: false,
-      },
-      {
-        imgSrc: images.tiger,
-        id: uuidv4(),
-        pairId: 8,
-        isVisible: false,
-      },
-    ].sort(() => Math.random() - 0.5);
-
-    return shuffledArray;
-  }
 
   revealCard = (el) => {
     el.stopPropagation();
@@ -213,7 +109,7 @@ class Board extends Component {
 
   resetGame = () => {
     if (!this.state.isMusicFaded) menuMusic.fade(0.2, 1, 100);
-    this.setState({ board: this.generateBoard(), isGameoverVisible: false });
+    this.setState({ board: BoardGenerator(), isGameoverVisible: false });
   };
 
   render() {
