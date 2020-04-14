@@ -33,6 +33,7 @@ class Board extends Component {
     pairs: 0,
     gameLimit: 8,
     score: 0,
+    steps: 0,
     isGameoverVisible: false,
     isMusicFaded: false,
   };
@@ -40,7 +41,7 @@ class Board extends Component {
   revealCard = (el) => {
     el.stopPropagation();
     const { id } = el.currentTarget;
-    const { board, tempItems, currCheckedIds, pairs } = this.state;
+    const { board, tempItems, currCheckedIds, pairs, steps } = this.state;
 
     cardReveal.play();
 
@@ -64,6 +65,8 @@ class Board extends Component {
         }
       });
     }
+
+    if (tempItems.length > 1) this.setState({ steps: this.state.steps + 1 });
 
     if (tempItems[0] === tempItems[1]) {
       foundPair.play();
@@ -91,13 +94,14 @@ class Board extends Component {
     // TODO
   };
 
-  saveScoreToCookie = (score) => (document.cookie = `"score=${score}"`);
+  saveScoreToCookie = (score) => (document.cookie = `score=${score};`);
 
   finishGame = () => {
     this.setState(
       {
         score: this.state.score + 1,
         pairs: 0,
+        steps: 0,
       },
       () => this.saveScoreToCookie(this.state.score)
     );
@@ -120,7 +124,7 @@ class Board extends Component {
   };
 
   render() {
-    const { board, score } = this.state;
+    const { board, score, steps } = this.state;
     return (
       <div className={styles.boardWrapper}>
         <Gameover
@@ -141,7 +145,7 @@ class Board extends Component {
           </div>
         </div>
 
-        <Scoreboard score={score} />
+        <Scoreboard score={score} steps={steps} />
         <div className={styles.board}>
           {board.map((el) => {
             return (
