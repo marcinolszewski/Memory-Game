@@ -1,8 +1,23 @@
 import React from 'react';
 import { SettingsContext } from '../../context/SettingsContext';
 import styles from './MenuElements.module.scss';
+import MenuBtn from '../MenuBtn/MenuBtn';
 
 const MenuElements = ({ changeMenu }) => {
+  const menuValues = [
+    {
+      title: 'Start Game',
+      function: 'newGame',
+    },
+    {
+      title: 'Settings',
+      function: 'settings',
+    },
+    {
+      title: 'Scores',
+      function: 'scores',
+    },
+  ];
   return (
     <div className={styles.menu__wrapper}>
       <div className={styles.menu}>
@@ -15,24 +30,13 @@ const MenuElements = ({ changeMenu }) => {
             );
           }}
         </SettingsContext.Consumer>
-        <button
-          className={styles.menu__btn}
-          onClick={() => changeMenu('newGame')}
-        >
-          Start game
-        </button>
-        <button
-          className={styles.menu__btn}
-          onClick={() => changeMenu('settings')}
-        >
-          Settings
-        </button>
-        <button
-          className={styles.menu__btn}
-          onClick={() => changeMenu('scores')}
-        >
-          Scores
-        </button>
+        {menuValues.map((menuVal) => {
+          return (
+            <MenuBtn handleOnClick={() => changeMenu(menuVal.function)}>
+              {menuVal.title}
+            </MenuBtn>
+          );
+        })}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './Board.module.scss';
 import images from '../../componentAssets/Images';
 import '../../Globals.scss';
+import MenuBtn from '../MenuBtn/MenuBtn';
 import {
   cardReveal,
   foundPair,
@@ -225,9 +226,7 @@ class Board extends Component {
           handleClick={this.resetGame}
         />
         <div className="btn__wrapper">
-          <button className="menu__btn" onClick={() => this.props.showMenu()}>
-            Menu
-          </button>
+          <MenuBtn handleOnClick={() => this.props.showMenu()}>Menu</MenuBtn>
           <div className="menu__mute">
             <button
               className={
