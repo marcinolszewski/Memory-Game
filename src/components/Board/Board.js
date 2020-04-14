@@ -4,6 +4,7 @@ import Scoreboard from '../Scoreboard/Scoreboard';
 import Gameover from '../Gameover/Gameover';
 import styles from './Board.module.scss';
 import BoardGenerator from '../BoardGenerator/BoardGenerator';
+import { SettingsContext } from '../../context/SettingsContext';
 import '../../Globals.scss';
 import {
   cardReveal,
@@ -13,6 +14,8 @@ import {
 } from '../../componentAssets/Sounds';
 
 class Board extends Component {
+  static contextType = SettingsContext;
+
   componentDidMount() {
     menuMusic.play();
   }
@@ -22,7 +25,7 @@ class Board extends Component {
   }
 
   state = {
-    board: BoardGenerator(),
+    board: BoardGenerator(this.context.cardBack, 8),
     collectedItems: [],
     tempItems: [],
     currCheckedIds: [],
@@ -109,7 +112,10 @@ class Board extends Component {
 
   resetGame = () => {
     if (!this.state.isMusicFaded) menuMusic.fade(0.2, 1, 100);
-    this.setState({ board: BoardGenerator(), isGameoverVisible: false });
+    this.setState({
+      board: BoardGenerator(this.context.cardBack, 8),
+      isGameoverVisible: false,
+    });
   };
 
   render() {
