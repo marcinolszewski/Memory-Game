@@ -9,12 +9,12 @@ const Gameover = ({ handleClick, isVisible }) => {
       }
     >
       <p className={styles.header}>
-        Gratulacje,
+        Congratulations,
         <br />
-        wygrałaś!
+        you won!
       </p>
       <button className={styles.button} onClick={handleClick}>
-        Rozpocznij od nowa
+        Start again
       </button>
     </div>
   );
