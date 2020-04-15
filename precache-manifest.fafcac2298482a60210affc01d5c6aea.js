@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c047554a1e53585258656f61cafe5d1e",
+    "revision": "ad5a3a58dd9aeef1f21291a67bdec904",
     "url": "/Memory-Game/index.html"
   },
   {
-    "revision": "c83f5d80b7568604eea4",
-    "url": "/Memory-Game/static/css/main.761e5842.chunk.css"
+    "revision": "a063a51b8f80fcc56d0e",
+    "url": "/Memory-Game/static/css/main.c470ca2d.chunk.css"
   },
   {
-    "revision": "c54d780e375f2f4f9629",
-    "url": "/Memory-Game/static/js/2.b38b12c7.chunk.js"
+    "revision": "fa0fe7f2c3c09c77a29a",
+    "url": "/Memory-Game/static/js/2.49bf5374.chunk.js"
   },
   {
     "revision": "108fb3bdf508c233ad8c482c42cea3cc",
-    "url": "/Memory-Game/static/js/2.b38b12c7.chunk.js.LICENSE.txt"
+    "url": "/Memory-Game/static/js/2.49bf5374.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c83f5d80b7568604eea4",
-    "url": "/Memory-Game/static/js/main.758f410f.chunk.js"
+    "revision": "a063a51b8f80fcc56d0e",
+    "url": "/Memory-Game/static/js/main.b4c80497.chunk.js"
   },
   {
     "revision": "896e72205f07b613bedd",
@@ -44,6 +44,42 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Memory-Game/static/media/foundPair.a75c2497.wav"
   },
   {
+    "revision": "ebe3366610c22b450bb0863ceb6ba05a",
+    "url": "/Memory-Game/static/media/frozen1.ebe33666.png"
+  },
+  {
+    "revision": "fceea4603b882df7079cf39f39c8deb2",
+    "url": "/Memory-Game/static/media/frozen2.fceea460.png"
+  },
+  {
+    "revision": "aae61cb388154fff88f44bc8d834fb25",
+    "url": "/Memory-Game/static/media/frozen3.aae61cb3.png"
+  },
+  {
+    "revision": "bbfb4e40ea397acd372f5aefc023d271",
+    "url": "/Memory-Game/static/media/frozen4.bbfb4e40.png"
+  },
+  {
+    "revision": "5f92b3dfeaa9145c6f727ad19128c430",
+    "url": "/Memory-Game/static/media/frozen5.5f92b3df.png"
+  },
+  {
+    "revision": "17ad9fd35fe3185fd576ae1d8c2f16ca",
+    "url": "/Memory-Game/static/media/frozen6.17ad9fd3.png"
+  },
+  {
+    "revision": "cf06272ff3596a23d342479592e0210e",
+    "url": "/Memory-Game/static/media/frozen7.cf06272f.png"
+  },
+  {
+    "revision": "05e02acff302a4e373e8c58999190aed",
+    "url": "/Memory-Game/static/media/frozen8.05e02acf.png"
+  },
+  {
+    "revision": "0c5c9d43c304969b4215656a2fe58d14",
+    "url": "/Memory-Game/static/media/frozen9.0c5c9d43.png"
+  },
+  {
     "revision": "7740f4359c53e7415adae7d44307feb0",
     "url": "/Memory-Game/static/media/gameWin.7740f435.wav"
   },
@@ -54,6 +90,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "04a73f73516c6ed6f1caf071aad09e60",
     "url": "/Memory-Game/static/media/goat.04a73f73.jpg"
+  },
+  {
+    "revision": "36ff6eceba41b83b97a74658df1ddaf4",
+    "url": "/Memory-Game/static/media/moon.36ff6ece.png"
   },
   {
     "revision": "943ad063ec8e461b5b012c3662559bd2",
