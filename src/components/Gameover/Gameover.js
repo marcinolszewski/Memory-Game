@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Gameover.module.scss';
+import { SettingsContext } from '../../context/SettingsContext';
 
 const Gameover = ({ handleClick, isVisible }) => {
   return (
@@ -8,11 +9,17 @@ const Gameover = ({ handleClick, isVisible }) => {
         isVisible ? styles.wrapper : `${styles.wrapper} ${styles.hidden}`
       }
     >
-      <p className={styles.header}>
-        Congratulations,
-        <br />
-        you won!
-      </p>
+      <SettingsContext.Consumer>
+        {(context) => {
+          return (
+            <p className={styles.header}>
+              Congratulations {context.name},
+              <br />
+              you won!
+            </p>
+          );
+        }}
+      </SettingsContext.Consumer>
       <button className={styles.button} onClick={handleClick}>
         Start again
       </button>

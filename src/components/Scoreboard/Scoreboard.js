@@ -1,11 +1,15 @@
 import React from 'react';
 import styles from './Scoreboard.module.scss';
 
-function Scoreboard({ score }) {
+function Scoreboard({ score, steps }) {
   return (
     <div className={styles.wrapper}>
-      <span>Games won: </span>
-      <span>{score}</span>
+      <p className={styles.scoreLabel}>
+        Games won: <span>{score}</span>
+      </p>
+      <p className={styles.scoreLabel}>
+        Steps: <span>{steps}</span>
+      </p>
     </div>
   );
 }
