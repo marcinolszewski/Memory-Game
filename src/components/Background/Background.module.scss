@@ -234,6 +234,18 @@
   left: 16px;
 }
 
+.dark {
+  .sky,
+  .clouds,
+  .secondaryClouds,
+  .sea,
+  .sea1,
+  .grounds,
+  .grounds1 {
+    filter: brightness(0.3);
+  }
+}
+
 @media (max-width: 500px) {
   .rockTree1 {
     &__wrapper {

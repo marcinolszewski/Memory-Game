@@ -14,35 +14,16 @@ const Background = (props) => {
         const isDarkTheme = themeContext === 'dark';
 
         return (
-          <div className={styles.wrapper}>
-            <div
-              className={styles.sky}
-              style={themeContext === 'dark' ? darkTheme : null}
-            ></div>
-            <div
-              className={styles.clouds}
-              style={themeContext === 'dark' ? darkTheme : null}
-            ></div>
-            <div
-              className={styles.secondaryClouds}
-              style={themeContext === 'dark' ? darkTheme : null}
-            ></div>
-            <div
-              className={styles.sea}
-              style={themeContext === 'dark' ? darkTheme : null}
-            ></div>
-            <div
-              className={styles.sea1}
-              style={themeContext === 'dark' ? darkTheme : null}
-            ></div>
-            <div
-              className={styles.grounds}
-              style={themeContext === 'dark' ? darkTheme : null}
-            ></div>
-            <div
-              className={styles.grounds1}
-              style={themeContext === 'dark' ? darkTheme : null}
-            ></div>
+          <div
+            className={`${styles.wrapper} ${isDarkTheme ? styles.dark : ''}`}
+          >
+            <div className={styles.sky}></div>
+            <div className={styles.clouds}></div>
+            <div className={styles.secondaryClouds}></div>
+            <div className={styles.sea}></div>
+            <div className={styles.sea1}></div>
+            <div className={styles.grounds}></div>
+            <div className={styles.grounds1}></div>
 
             <div
               className={
