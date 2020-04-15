@@ -10,7 +10,6 @@ const Background = (props) => {
     <SettingsContext.Consumer>
       {(context) => {
         const themeContext = context.gameBackground;
-        const darkTheme = { filter: 'brightness(0.3)' };
         const isDarkTheme = themeContext === 'dark';
 
         return (
