@@ -16,6 +16,28 @@
   z-index: 10;
 }
 
+.moon {
+  background-image: url('../../assets/background/moon.png');
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  image-rendering: crisp-edges;
+  position: absolute;
+  top: -680px;
+  left: 20%;
+  z-index: -1;
+  filter: drop-shadow(8px 8px 5px #333);
+  transition: all 0.5s ease-in-out 0s;
+  animation: bgElems1 5s infinite;
+}
+
+.moonShown {
+  top: 200px;
+  left: 20%;
+  z-index: 1;
+}
+
 .clouds,
 .secondaryClouds {
   background-image: url('../../assets/background/clouds.png');
