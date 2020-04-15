@@ -41,7 +41,7 @@ class Board extends Component {
   revealCard = (el) => {
     el.stopPropagation();
     const { id } = el.currentTarget;
-    const { board, tempItems, currCheckedIds, pairs, steps } = this.state;
+    const { board, tempItems, currCheckedIds, pairs } = this.state;
 
     cardReveal.play();
 
