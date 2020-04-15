@@ -30,9 +30,12 @@ const MenuElements = ({ changeMenu }) => {
             );
           }}
         </SettingsContext.Consumer>
-        {menuValues.map((menuVal) => {
+        {menuValues.map((menuVal, idx) => {
           return (
-            <MenuBtn handleOnClick={() => changeMenu(menuVal.function)}>
+            <MenuBtn
+              handleOnClick={() => changeMenu(menuVal.function)}
+              key={idx}
+            >
               {menuVal.title}
             </MenuBtn>
           );
