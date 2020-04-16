@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../Globals.scss';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 
 const Scores = ({ showMenu }) => {
+  const [scores, setScores] = useState(0);
+
   const database = firebase.database();
 
   const data = database
@@ -15,7 +17,7 @@ const Scores = ({ showMenu }) => {
         .sort((a, b) => data[a].steps - data[b].steps)
         .map((key) => data[key]);
 
-      sortedData.map((el) => console.log(el.name, el.steps));
+      sortedData.map((el) => setScores({ name: el.name, score: el.score }));
     });
 
   return (
