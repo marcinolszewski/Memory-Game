@@ -14,6 +14,9 @@ import {
   menuMusic,
 } from '../../componentAssets/Sounds';
 
+import * as firebase from 'firebase/app';
+import 'firebase/database';
+
 class Board extends Component {
   static contextType = SettingsContext;
 
@@ -96,7 +99,22 @@ class Board extends Component {
 
   saveScoreToCookie = (score) => (document.cookie = `score=${score};`);
 
+  saveScoreToDb = (name, steps, time) => {
+    const playerScore = {
+      name: name,
+      steps: steps,
+      time: time,
+    };
+
+    const newScoreKey = firebase.database().ref().child('scores').push().key;
+    const updates = {};
+    updates['/scores/' + newScoreKey] = playerScore;
+
+    return firebase.database().ref().update(updates);
+  };
+
   finishGame = () => {
+    this.saveScoreToDb(this.context.name, this.state.steps, 0);
     this.setState(
       {
         score: this.state.score + 1,
