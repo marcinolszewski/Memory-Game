@@ -52,3 +52,10 @@
     padding: 20px 0px;
   }
 }
+
+@media (max-width: 560px) {
+  .menu {
+    width: 100%;
+    height: 100vh;
+  }
+}

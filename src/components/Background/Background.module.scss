@@ -367,3 +367,9 @@
     transform: translate3d(-99px, 0, 0);
   }
 }
+
+@media (max-width: 560px) {
+  .moon {
+    top: 30px;
+  }
+}
