@@ -4,6 +4,7 @@ import styles from './Scores.module.scss';
 import '../../Globals.scss';
 import * as firebase from 'firebase/app';
 import Spinner from '../Spinner/Spinner';
+import MenuBtn from '../MenuBtn/MenuBtn';
 
 const Scores = ({ showMenu }) => {
   const [scores, setScores] = useState([]);
@@ -28,9 +29,9 @@ const Scores = ({ showMenu }) => {
   return (
     <div className="menu__wrapper">
       <div className="menu">
-        <button className="menu__btnBack" onClick={() => showMenu()}>
-          BACK
-        </button>
+        <MenuBtn btnStyle={'back'} handleOnClick={() => showMenu()}>
+          Back
+        </MenuBtn>
         <table className={styles.table}>
           <thead>
             <tr className={styles.table__header}>

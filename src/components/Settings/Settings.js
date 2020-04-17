@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { SettingsContext } from '../../context/SettingsContext';
 import styles from './Settings.module.scss';
 import '../../Globals.scss';
+import MenuBtn from '../MenuBtn/MenuBtn';
 
 class Settings extends Component {
   constructor() {
@@ -41,18 +42,19 @@ class Settings extends Component {
           return (
             <div className="menu__wrapper">
               <div className="menu">
-                <button
-                  className="menu__btnBack"
-                  onClick={() => this.props.showMenu()}
+                <MenuBtn
+                  btnStyle={'back'}
+                  handleOnClick={() => this.props.showMenu()}
                 >
                   Back
-                </button>
+                </MenuBtn>
 
                 <p className="menu__label">Your name:</p>
                 <p className="menu__labelInfo">{name}</p>
-                <button className="menu__btn" onClick={this.showNameModal}>
+
+                <MenuBtn handleOnClick={this.showNameModal}>
                   Change name
-                </button>
+                </MenuBtn>
 
                 {this.state.nameModalVisible ? (
                   <div className="menu__modal">
@@ -66,46 +68,45 @@ class Settings extends Component {
                       onChange={this.changeName}
                       placeholder="Your name ..."
                     />
-                    <button
-                      className="menu__btn"
-                      onClick={() => {
+                    <MenuBtn
+                      handleOnClick={() => {
                         this.checkNameLength();
                         changePlayerName(this.state.name);
                       }}
                     >
                       Save
-                    </button>
+                    </MenuBtn>
                   </div>
                 ) : null}
 
                 <p className="menu__label">Card type:</p>
-                <button
-                  className="menu__btn"
-                  onClick={
+
+                <MenuBtn
+                  handleOnClick={
                     cardBack === 'frozen' ? () => changeCardBack() : null
                   }
                 >
-                  Animals
+                  Animals{' '}
                   {cardBack === 'animals' ? (
                     <div className={styles.checked}>&bull;</div>
                   ) : null}
-                </button>
-                <button
-                  className="menu__btn"
-                  onClick={
+                </MenuBtn>
+
+                <MenuBtn
+                  handleOnClick={
                     cardBack === 'animals' ? () => changeCardBack() : null
                   }
                 >
-                  Frozen
+                  Frozen{' '}
                   {cardBack === 'frozen' ? (
                     <div className={styles.checked}>&bull;</div>
                   ) : null}
-                </button>
+                </MenuBtn>
 
                 <p className="menu__label">Game background:</p>
-                <button
-                  className="menu__btn"
-                  onClick={
+
+                <MenuBtn
+                  handleOnClick={
                     gameBackground === 'light'
                       ? () => changeGameBackground()
                       : null
@@ -115,10 +116,10 @@ class Settings extends Component {
                   {gameBackground === 'dark' ? (
                     <div className={styles.checked}>&bull;</div>
                   ) : null}
-                </button>
-                <button
-                  className="menu__btn"
-                  onClick={
+                </MenuBtn>
+
+                <MenuBtn
+                  handleOnClick={
                     gameBackground === 'dark'
                       ? () => changeGameBackground()
                       : null
@@ -128,7 +129,7 @@ class Settings extends Component {
                   {gameBackground === 'light' ? (
                     <div className={styles.checked}>&bull;</div>
                   ) : null}
-                </button>
+                </MenuBtn>
               </div>
             </div>
           );
