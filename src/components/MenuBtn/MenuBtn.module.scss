@@ -59,9 +59,13 @@
 }
 
 @media (max-width: 560px) {
-  .menu__btn {
-    min-width: 180px;
-    min-height: 40px;
-    font-size: 12px;
+  .menu {
+    &__btn,
+    &__returnBtn,
+    &__specialBtn {
+      min-width: 180px;
+      min-height: 40px;
+      font-size: 12px;
+    }
   }
 }
