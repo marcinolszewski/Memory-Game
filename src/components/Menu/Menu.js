@@ -42,6 +42,7 @@ class Menu extends Component {
     } else {
       menu = <MenuElements changeMenu={(el) => this.changeMenu(el)} />;
     }
+
     return <Background>{menu}</Background>;
   }
 }

@@ -18,4 +18,42 @@
       cursor: pointer;
     }
   }
+
+  &__returnBtn {
+    background-color: #fff;
+    border: 3px dashed #000;
+    border-radius: 0px;
+    color: #000;
+    min-width: 250px;
+    min-height: 60px;
+    margin: 10px 0px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 16px;
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      background-color: #920dc1;
+      border: 3px dashed #fff;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  &__specialBtn {
+    margin: 20px auto;
+    width: 280px;
+    height: 80px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 16px;
+    background-color: #fb0;
+    border-radius: 0px;
+    border: 5px dashed #fff;
+    color: #000;
+
+    @media (max-width: 500px) {
+      font-size: 10px;
+      width: 220px;
+      height: 60px;
+    }
+  }
 }

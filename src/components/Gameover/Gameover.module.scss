@@ -26,24 +26,6 @@
   }
 }
 
-.button {
-  margin: 20px auto;
-  width: 280px;
-  height: 80px;
-  font-family: 'Press Start 2P', sans-serif;
-  font-size: 16px;
-  background-color: #fb0;
-  border-radius: 0px;
-  border: 5px dashed #fff;
-  color: #000;
-
-  @media (max-width: 500px) {
-    font-size: 10px;
-    width: 220px;
-    height: 60px;
-  }
-}
-
 .hidden {
   position: absolute;
   visibility: hidden;

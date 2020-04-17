@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Gameover.module.scss';
 import { SettingsContext } from '../../context/SettingsContext';
+import MenuBtn from '../MenuBtn/MenuBtn';
 
 const Gameover = ({ handleClick, isVisible }) => {
   return (
@@ -20,9 +21,9 @@ const Gameover = ({ handleClick, isVisible }) => {
           );
         }}
       </SettingsContext.Consumer>
-      <button className={styles.button} onClick={handleClick}>
+      <MenuBtn btnStyle={'special'} handleOnClick={handleClick}>
         Start again
-      </button>
+      </MenuBtn>
     </div>
   );
 };
