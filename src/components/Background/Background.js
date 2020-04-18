@@ -16,11 +16,13 @@ const Background = (props) => {
           <div
             className={`${styles.wrapper} ${isDarkTheme ? styles.dark : ''}`}
           >
+            <div className={styles.landscapeOverlay}></div>
             <div className={styles.sky}></div>
             <div className={styles.clouds}></div>
             <div className={styles.secondaryClouds}></div>
             <div className={styles.sea}></div>
             <div className={styles.sea1}></div>
+            <div className={styles.sea2}></div>
             <div className={styles.grounds}></div>
             <div className={styles.grounds1}></div>
 

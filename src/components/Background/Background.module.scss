@@ -61,7 +61,8 @@
 }
 
 .sea,
-.sea1 {
+.sea1,
+.sea2 {
   background-image: url('../../assets/background/sea.png');
   width: 100%;
   height: 20%;
@@ -71,7 +72,8 @@
   margin-top: -45px;
 }
 
-.sea {
+.sea,
+.sea2 {
   animation: sea 8s infinite;
 }
 
@@ -240,26 +242,10 @@
   .secondaryClouds,
   .sea,
   .sea1,
+  .sea2,
   .grounds,
   .grounds1 {
     filter: brightness(0.3);
-  }
-}
-
-@media (max-width: 500px) {
-  .rockTree1 {
-    &__wrapper {
-      display: none;
-    }
-  }
-
-  .grounds {
-    display: none;
-  }
-
-  .clouds,
-  .secondaryClouds {
-    margin-top: -180px;
   }
 }
 
@@ -365,5 +351,70 @@
   }
   to {
     transform: translate3d(-99px, 0, 0);
+  }
+}
+
+@media (max-height: 420px) {
+  .landscapeOverlay {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    position: absolute;
+    overflow: hidden;
+    z-index: 999;
+
+    &:after {
+      content: 'Please turn your phone to portrait mode';
+      display: flex;
+      text-align: center;
+      color: #fff;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .moonShown {
+    top: 30px;
+    left: 0px;
+  }
+  .sea,
+  .sea1 {
+    height: 30%;
+    margin-top: -90px;
+  }
+  .sea2 {
+    margin-top: -50px;
+  }
+
+  .secondaryClouds {
+    height: 25%;
+  }
+}
+
+@media (max-width: 500px) {
+  .rockTree1 {
+    &__wrapper {
+      display: none;
+    }
+  }
+
+  .grounds {
+    display: none;
+  }
+
+  .clouds,
+  .secondaryClouds {
+    margin-top: -180px;
+  }
+}
+
+@media (max-width: 420px) {
+  .sea2 {
+    margin-top: -10px;
   }
 }
