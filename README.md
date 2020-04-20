@@ -1,5 +1,8 @@
 # Memory game.
 
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://marcinolszewski.github.io/Memory-Game/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 ## Card flipping game, created with create-react-app
 
 ### Technologies used:
