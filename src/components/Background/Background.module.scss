@@ -13,7 +13,6 @@
   background-repeat: repeat-x;
   background-size: contain;
   image-rendering: crisp-edges;
-  z-index: 10;
 }
 
 .moon {
@@ -26,7 +25,6 @@
   position: absolute;
   top: -680px;
   left: 20%;
-  z-index: -1;
   filter: drop-shadow(8px 8px 5px #333);
   transition: all 0.5s ease-in-out 0s;
   animation: bgElems1 5s infinite;
@@ -35,7 +33,7 @@
 .moonShown {
   top: 200px;
   left: 20%;
-  z-index: 1;
+  z-index: 999;
 }
 
 .clouds,
@@ -50,14 +48,9 @@
   animation: clouds 5s infinite;
 }
 
-.clouds {
-  z-index: 9;
-}
-
 .secondaryClouds {
   background-position: -50px;
   animation: clouds1 5s infinite;
-  z-index: 8;
 }
 
 .sea,
@@ -377,7 +370,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px), (max-height: 768px) {
   .moonShown {
     top: 30px;
     left: 0px;
@@ -396,7 +389,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 500px), (max-height: 768px) {
   .rockTree1 {
     &__wrapper {
       display: none;
