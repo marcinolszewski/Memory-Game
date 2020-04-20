@@ -38,7 +38,7 @@
   filter: opacity(0.3);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px), (max-height: 768px) {
   .board {
     grid-gap: 10px;
   }
