@@ -3,8 +3,8 @@ import styles from './Spinner.module.scss';
 
 const Spinner = () => {
   return (
-    <div className={styles.spinner__wrapper}>
-      <div className={styles.spinner}></div>
+    <div data-test="spinnerWrapper" className={styles.spinner__wrapper}>
+      <div data-test="spinner" className={styles.spinner}></div>
     </div>
   );
 };

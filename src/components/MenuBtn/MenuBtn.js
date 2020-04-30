@@ -16,7 +16,7 @@ const MenuBtn = ({ btnStyle, handleOnClick, children }) => {
       break;
   }
   return (
-    <button className={btnTheme} onClick={handleOnClick}>
+    <button className={btnTheme} onClick={handleOnClick} data-test="menuBtn">
       {children}
     </button>
   );

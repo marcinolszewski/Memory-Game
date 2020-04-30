@@ -35,6 +35,7 @@ const MenuElements = ({ changeMenu }) => {
             <MenuBtn
               handleOnClick={() => changeMenu(menuVal.function)}
               key={idx}
+              data-test="menuElement"
             >
               {menuVal.title}
             </MenuBtn>

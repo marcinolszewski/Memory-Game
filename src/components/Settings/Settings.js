@@ -50,14 +50,19 @@ class Settings extends Component {
                 </MenuBtn>
 
                 <p className="menu__label">Your name:</p>
-                <p className="menu__labelInfo">{name}</p>
+                <p className="menu__labelInfo" data-test="playerName">
+                  {name}
+                </p>
 
-                <MenuBtn handleOnClick={this.showNameModal}>
+                <MenuBtn
+                  handleOnClick={this.showNameModal}
+                  data-test="showModalBtn"
+                >
                   Change name
                 </MenuBtn>
 
                 {this.state.nameModalVisible ? (
-                  <div className="menu__modal">
+                  <div className="menu__modal" data-test="changeNameModal">
                     {this.state.showNameError ? (
                       <p className="menu__error">Your name is too short!</p>
                     ) : null}
@@ -85,10 +90,13 @@ class Settings extends Component {
                   handleOnClick={
                     cardBack === 'frozen' ? () => changeCardBack() : null
                   }
+                  data-test="animalsBtn"
                 >
                   Animals{' '}
                   {cardBack === 'animals' ? (
-                    <div className={styles.checked}>&bull;</div>
+                    <div className={styles.checked} data-test="elementChecked">
+                      &bull;
+                    </div>
                   ) : null}
                 </MenuBtn>
 
@@ -96,10 +104,13 @@ class Settings extends Component {
                   handleOnClick={
                     cardBack === 'animals' ? () => changeCardBack() : null
                   }
+                  data-test="frozenBtn"
                 >
                   Frozen{' '}
                   {cardBack === 'frozen' ? (
-                    <div className={styles.checked}>&bull;</div>
+                    <div className={styles.checked} data-test="elementChecked">
+                      &bull;
+                    </div>
                   ) : null}
                 </MenuBtn>
 
@@ -111,10 +122,13 @@ class Settings extends Component {
                       ? () => changeGameBackground()
                       : null
                   }
+                  data-test="darkThemeBtn"
                 >
                   Dark
                   {gameBackground === 'dark' ? (
-                    <div className={styles.checked}>&bull;</div>
+                    <div className={styles.checked} data-test="elementChecked">
+                      &bull;
+                    </div>
                   ) : null}
                 </MenuBtn>
 
@@ -124,10 +138,13 @@ class Settings extends Component {
                       ? () => changeGameBackground()
                       : null
                   }
+                  data-test="lightThemeBtn"
                 >
                   Light
                   {gameBackground === 'light' ? (
-                    <div className={styles.checked}>&bull;</div>
+                    <div className={styles.checked} data-test="elementChecked">
+                      &bull;
+                    </div>
                   ) : null}
                 </MenuBtn>
               </div>

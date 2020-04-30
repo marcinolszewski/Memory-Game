@@ -21,7 +21,11 @@ const Gameover = ({ handleClick, isVisible }) => {
           );
         }}
       </SettingsContext.Consumer>
-      <MenuBtn btnStyle={'special'} handleOnClick={handleClick}>
+      <MenuBtn
+        btnStyle={'special'}
+        handleOnClick={handleClick}
+        data-test="button"
+      >
         Start again
       </MenuBtn>
     </div>
